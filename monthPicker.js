@@ -57,7 +57,7 @@ var monthPicker = {
         //是否加载即回调
         autoCommit: false,
         //返回的是月份，还是日期，默认是月份
-        returnMonth: false,
+        returnDate: false,
         //默认选中的时间月份 , 字符串规范形如： '201302'
         defaultMonth: '',
         //默认选中上个月
@@ -146,7 +146,7 @@ var monthPicker = {
      * @return {Object} 开始结束时间对象
      */
     convertToDate: function(obj) {
-        if (this._conf.returnMonth) {
+        if (this._conf.returnDate) {
             return {
                 'start_date': obj.year + '-' + obj.month + '-01',
                 'end_date': obj.year + '-' + obj.month + '-31'
@@ -265,7 +265,7 @@ var monthPicker = {
                 var method = this.addCss;
                 //判断是否超过今年
                 if (!this._conf.all_month_valid && this.assemble.year == this.util.getCurrentDate().year && months.data[p][i] > this.util.getCurrentDate().month) {
-                    $(td).addClass(this._conf.disabledCss);
+                   $(td).addClass(this._conf.disabledCss);
                 }
                 //判断是否是区间选择
                 else {
@@ -318,29 +318,6 @@ var monthPicker = {
         } else {
             monthPicker.Params.end_month = select_month;
             monthPicker.Params.end_year = that.assemble.year;
-
-            /*
-			start = that.util.format({year: monthPicker.Params.start_year, month: monthPicker.Params.start_month});
-			end =  that.util.format({year: monthPicker.Params.end_year, month: monthPicker.Params.end_month});
-		
-			//这里做下比较，然后确定大小关系。
-			if(new Date([start.year, start.month,'01'].join('-')).getTime() > new Date([end.year, end.month, '01'].join('-')).getTime()){
-				var tmp = start;
-				start = end;
-				end= tmp;
-			}
-			
-			debugger;
-			//这里比较月份大小的逻辑中没有考虑到跨年的情况，这里修正一下：johnny@2014-01-08
-			if(monthPicker.Params.start_year == monthPicker.Params.end_year){
-				sm = Math.min( monthPicker.Params.end_month,  monthPicker.Params.start_month);
-				em = Math.max( monthPicker.Params.end_month,  monthPicker.Params.start_month);
-				for(var i = sm; i<=em; i++){
-					$('#gri_month'+i).addClass(that._conf.selectCss);
-				}
-			}
-			else{}
-			*/
             var ret = that.periodCss();
             var start = ret.start,
                 end = ret.end;
