@@ -1,12 +1,13 @@
 # MonthPicker
 基于jQuery的月份选择器，提供web应用系统中常用的月份选择操作功能。
-# 文件列表
+# 文件列表 #
 + monthPicker.js  组件选择器的主js
 + monthPicker.css 组件所依赖的样式
 + jquery.min.js   jQuery1.7.2类库
-+ images/		  组件所依赖的图片
-# 使用说明
-###调用示例###
++ images           组件所依赖的图片
+
+# 使用说明 #
+### 调用示例 ###
 <pre>
 	<code>
 		monthPicker.create('month_picker', {
@@ -19,8 +20,10 @@
 		});
 	</code>
 </pre>
-###参数说明###
-#####id#####
+
+
+### 参数说明 ###
+##### id #####
 组件月份选择回显的DOM元素ID
 #####trigger#####
 如果有额外的呼出结构，比如sample.html中的右侧向下的箭头，可以额外指定呼出选择面板的触发器
