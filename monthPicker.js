@@ -201,7 +201,7 @@ var monthPicker = {
         var cap = document.createElement('caption');
         var sp = document.createElement('span');
         sp.id = 'gri_year';
-        $(sp).append(this._conf.endYear + '年');
+        $(sp).append(new Date().getFullYear() + '年');
         $(cap).append(sp);
         $(table).append(cap);
 
