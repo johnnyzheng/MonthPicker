@@ -69,13 +69,14 @@
 			<div class="ta_date" id="div_month_picker">
 			    <span class="date_title" id="month_picker"></span>
 			    <a class="opt_sel" id="month_trigger" href="javascript:void(0);">
-			        <i class="i_orderd"></i>
+			        <i class="i_orderd" id="month_ico"></i>
 			    </a>
-			</div>
+			</div> 
+			<a id="user_trigger" href="#">触发器</a>
    			<br/>
 			<script type="text/javascript">
 				monthPicker.create('month_picker', {
-				    trigger : 'month_trigger',
+				    trigger : ['month_trigger', 'month_ico', 'user_trigger'],
 				    autoCommit : true,
 				    defaultMonth : '201510',
 				    all_month_valid : true,
@@ -94,7 +95,7 @@
 				<br/>
 				monthPicker.create('month_picker', {
 				<br/>
-				trigger : 'month_trigger',
+				trigger : ['month_trigger', 'month_ico', 'user_trigger'],
 				<br/>
 				autoCommit : true,
 				<br/>
