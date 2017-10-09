@@ -11,7 +11,7 @@
 <pre>
 	<code>
 		monthPicker.create('month_picker', {
-		    trigger : 'month_trigger',
+		    trigger : ['month_trigger', 'month_ico', 'user_trigger'],
 		    autoCommit : true,
 		    defaultMonth : '201511',
 		    callback : function(obj){
@@ -26,7 +26,7 @@
 ##### id #####
 组件月份选择回显的DOM元素ID
 #####trigger#####
-如果有额外的呼出结构，比如sample.html中的右侧向下的箭头，可以额外指定呼出选择面板的触发器
+如果有额外的呼出结构，比如sample.html中的右侧向下的箭头，可以额外指定呼出选择面板的触发器，数组形式
 #####autoCommit#####
 日期选择完毕后立即出发绑定的回调事件
 #####returnDate#####

@@ -16,6 +16,12 @@
 		支持默认选中上个月的参数
  *
  * ========================================
+ *      17-07-09
+ *      1、修复当修改endYear设置时导致的一系列bug
+ *      17-07-20
+ *      1、触发器改为数组的形式，用户可自行添加触发器，避免调用show()方法导致冲突
+ * @author zcnhonker(root@zcnhonker.net)
+ *
  */
 
 var monthPicker = {
@@ -49,7 +55,7 @@ var monthPicker = {
         //ID
         id: 'month_picker',
         //trigger 额外触发器
-        trigger: 'month_trigger',
+        trigger: ['month_trigger'],
         //回调函数
         callback: function(obj) {
             return true
@@ -94,11 +100,13 @@ var monthPicker = {
                 that.show(that.util.$(id));
             });
         }();
-        $('#' + that._conf.trigger).length > 0 && function() {
-            $('#' + that._conf.trigger).bind('click', function() {
-                that.show(that.util.$(id));
-            });
-        }();
+        for (var i = 0; i < that._conf.trigger.length; i++) {
+            $('#' + that._conf.trigger[i]).length > 0 && function() {
+                $('#' + that._conf.trigger[i]).bind('click', function() {
+                    that.show(that.util.$(id));
+                });
+            }();
+        };
         //判断是取一段时间的话
         if (that._conf.period && that._conf.start_month != '' && that._conf.end_month != '') {
             $('#' + id).html(that._conf.start_month + that._conf.defaultText + that._conf.end_month);
@@ -201,7 +209,7 @@ var monthPicker = {
         var cap = document.createElement('caption');
         var sp = document.createElement('span');
         sp.id = 'gri_year';
-        $(sp).append(this._conf.endYear + '年');
+        $(sp).append(new Date().getFullYear() + '年');
         $(cap).append(sp);
         $(table).append(cap);
 
@@ -424,7 +432,13 @@ var monthPicker = {
     cancel: function(evt) {
         var evt = window.event || evt,
             target = evt.srcElement || evt.target;
-        !(target.id && (target.id == this._conf.id || target.id == this._conf.trigger) || (this._conf.period && monthPicker.Params.current == monthPicker.Constant.START_MONTH) || target.className && (target.className == 'i_pre' || target.className == 'i_next')) && $('#' + this._conf.container).length > 0 && $('#' + this._conf.container).hide();
+        var isTrigger = false;
+        for(var i = 0; i < this._conf.trigger.length; i++) {
+            if (target.id == this._conf.trigger[i]) {
+                isTrigger = true;
+            };
+        };
+        !(target.id && (target.id == this._conf.id || isTrigger) || (this._conf.period && monthPicker.Params.current == monthPicker.Constant.START_MONTH) || target.className && (target.className == 'i_pre' || target.className == 'i_next')) && $('#' + this._conf.container).length > 0 && $('#' + this._conf.container).hide();
     },
     //确定
     submit: function() {
