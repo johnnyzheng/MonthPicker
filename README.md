@@ -25,15 +25,18 @@
 ### 参数说明 ###
 ##### id #####
 组件月份选择回显的DOM元素ID
-#####trigger#####
+##### trigger #####
 如果有额外的呼出结构，比如sample.html中的右侧向下的箭头，可以额外指定呼出选择面板的触发器，数组形式
-#####autoCommit#####
+##### autoCommit #####
 日期选择完毕后立即出发绑定的回调事件
-#####returnDate#####
+##### returnDate #####
 选择后回调传入的值是月份还是具体日期，默认是月份，如果需要日期，则设置为true
-#####defaultMonth#####
+##### defaultMonth #####
 初始化月份选择器时候指定的默认日期，形如：‘201510’
-#####all_month_valid#####
+##### all_month_valid #####
 是否所有月份都可选择，默认是false，则本月之后的月份不可选择，如果设置为true，则全部可选
-#####callback#####
+##### callback #####
 选择成功后提交调用的回调函数，传入已选择的格式化后的月份或者日期，如：‘2015-10’
+
+<h2>欢迎捐赠</h2>
+<img src="http://imgcache.xg.qq.com/weight/wx4johnny.jpg" alt="捐赠码" />
